@@ -4,16 +4,17 @@ function NewMessage({ currentUser, onAddMessage }) {
   const [body, setBody] = useState("");
 
   function handleSubmit(e) {
+    console.log(body, currentUser.username)
     e.preventDefault();
 
-    fetch("http://127.0.0.1:4000/messages", {
+    fetch("http://localhost:5555/messages", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
       },
       body: JSON.stringify({
         username: currentUser.username,
-        body: body,
+        body: body
       }),
     })
       .then((r) => r.json())
